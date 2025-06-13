@@ -1,9 +1,0 @@
-original - https://www.indirectsound.com/
-
-IndirectSound is a "wrapper".
-
-In order to use Microsoft's DirectSound a game must load a "library" named dsound.dll.
-
-When a game asks Windows to load "dsound.dll" it expects to use the official DirectX library created by Microsoft, but before Windows loads the official version it first looks in the same directory as the running application to see if a library named dsound.dll exists there (although you may need to change the registry in some cases for Windows to do this) - https://www.indirectsound.com/registryIssues.html
-
-If Windows finds dsound.dll in the application's directory then it will load that version instead of the official one. IndirectSound, then, is pretending to be the real DirectSound library, and the game doesn't know the difference.
