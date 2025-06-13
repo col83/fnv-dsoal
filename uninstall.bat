@@ -16,6 +16,6 @@ del /s /q "%GAMEDIR%\dsoal-aldrv.dll"
 del /s /q "%GAMEDIR%\dsoal-log-error.bat"
 
 :: config file
-del /s /q "%GAMEDIR%\alsoft.ini"
+:: del /s /q "%GAMEDIR%\alsoft.ini"
 
 pause
