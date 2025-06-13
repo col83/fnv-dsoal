@@ -1,4 +1,4 @@
-:: set DSOAL_LOGLEVEL to 1 error (default), 2 warnings, 3 verbose
+:: set DSOAL_LOGLEVEL to 1 errors, 2 warnings (default), 3 verbose
 
 :: more info - https://github.com/kcat/openal-soft/issues/976
 
@@ -10,7 +10,7 @@ set ALROUTER_ACCEPT=soft_oal.dll
 ::set ALROUTER_REJECT=wrap_oal.dll
 
 
-set DSOAL_LOGLEVEL=1
+set DSOAL_LOGLEVEL=2
 set DSOAL_LOGFILE=dsoal.log
 del /q .\dsoal.log
 
