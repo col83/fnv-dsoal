@@ -4,8 +4,7 @@ DSOAL (NO HRTF) (x32) - https://github.com/kcat/dsoal/actions/runs/15624259310
 
 soft_oal.dll (x32) - https://github.com/kcat/openal-soft/actions/runs/15596634122
 
-openal-info.exe (utils-r9867@b71d4a1) - https://github.com/kcat/openal-soft/releases/tag/utils
-
+openal-info.exe (utils-r9867@b71d4a1) - https://github.com/kcat/openal-soft/actions/runs/15516316085
 <br>
 
 <h2>EXPLANATION:</h2>
