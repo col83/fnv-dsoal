@@ -19,7 +19,6 @@ del /q .\dsoal.log
 
 :: more info:
 :: https://learn.microsoft.com/cpp/build/reference/largeaddressaware-handle-large-addresses?view=msvc-170
-
 :: https://www.nexusmods.com/newvegas/mods/62552?tab=description
 
 :: otherwise use nvse_loader.exe
