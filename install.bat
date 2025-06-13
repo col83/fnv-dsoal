@@ -17,7 +17,7 @@ copy /V /Y ".\dsoal\dsound.dll" "%GAMEDIR%\"
 copy /V /Y ".\dsoal\dsoal-aldrv.dll" "%GAMEDIR%\"
 
 :: script for debug info after game is being loaded
-copy /V /Y ".\dsoal\dsoal-log-error.bat" "%GAMEDIR%\"
+copy /V /Y ".\dsoal\dsoal_log.bat" "%GAMEDIR%\"
 
 :: config file
 copy /V /Y ".\dsoal\alsoft.ini" "%GAMEDIR%\"
