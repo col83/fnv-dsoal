@@ -6,6 +6,8 @@ soft_oal.dll (x32) - https://github.com/kcat/openal-soft/actions/runs/1559663412
 
 openal-info.exe (utils-r9867@b71d4a1) - https://github.com/kcat/openal-soft/releases/tag/utils
 
+<br>
+
 <h2>EXPLANATION:</h2>
 
 
