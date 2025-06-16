@@ -1,11 +1,11 @@
 :: set DSOAL_LOGLEVEL to 1 errors, 2 warnings (default), 3 verbose
 
 
-::manually use library
+:: manually use library
 set ALROUTER_ACCEPT=soft_oal.dll
 
-::or use any library instead default
-::set ALROUTER_REJECT=wrap_oal.dll
+:: or use any library instead default
+:: set ALROUTER_REJECT=wrap_oal.dll
 
 :: more info - https://github.com/kcat/openal-soft/issues/976
 

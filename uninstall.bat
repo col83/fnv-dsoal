@@ -14,7 +14,4 @@ del /s /q "%GAMEDIR%\dsoal-aldrv.dll"
 :: script for debug info after game is being loaded
 del /s /q "%GAMEDIR%\dsoal-log-error.bat"
 
-:: config file
-:: del /s /q "%GAMEDIR%\alsoft.ini"
-
 pause
