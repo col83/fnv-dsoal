@@ -1,14 +1,22 @@
 @echo off
 
-call ".\regs\regs.bat"
+cls
+echo.
 
+:: system installation
+call ".\regs\regs.bat"
+.\optionally\oainstall.exe /u /s
+
+echo.
+COPY /V /Y ".\dll\x64\router\OpenAL32.dll" "%SYSTEMROOT%\System32\"
+COPY /V /Y ".\dll\x64\soft_oal.dll" "%SYSTEMROOT%\System32\"
+
+echo.
+
+:: fallout nv installation
 set GAMEDIR=%SYSTEMDRIVE%\Games\Fallout New Vegas
 
-:: core components
-copy /V /Y ".\dll\x32\soft_oal.dll" "%GAMEDIR%\OpenAL32.dll"
-copy /V /Y ".\dsoal\x32\dsound.dll" "%GAMEDIR%\"
-copy /V /Y ".\dsoal\x32\dsoal-aldrv.dll" "%GAMEDIR%\"
-copy /V /Y ".\dsoal\x32\alsoft.ini" "%GAMEDIR%\"
+copy /V /Y ".\dsoal\*" "%GAMEDIR%\"
 
-:: script for debug info after game is being loaded
-copy /V /Y ".\dsoal\dsoal_log.bat" "%GAMEDIR%\"
+echo.
+pause

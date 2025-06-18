@@ -3,16 +3,14 @@
 
 :: manually use library
 set ALROUTER_ACCEPT=soft_oal.dll
-
-:: or use any library instead default
-:: set ALROUTER_REJECT=wrap_oal.dll
+set ALROUTER_REJECT=wrap_oal.dll
 
 :: more info - https://github.com/kcat/openal-soft/issues/976
 
 
 set DSOAL_LOGLEVEL=2
 set DSOAL_LOGFILE=dsoal.log
-del /q .\dsoal.log
+IF EXIST ".\%DSOAL_LOGFILE%" (del /q ".\%DSOAL_LOGFILE%")
 
 
 :: run the game through FalloutNV.exe (it must be patched to use LAA (Large Address Aware)).
