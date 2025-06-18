@@ -6,7 +6,6 @@ soft_oal.dll - https://github.com/kcat/openal-soft/actions/runs/15663113932
 
 openal soft - https://github.com/kcat/openal-soft/actions/runs/15649631255
 
-<br>
 
 <h2>EXPLANATION:</h2>
 
