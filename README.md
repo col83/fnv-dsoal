@@ -1,14 +1,13 @@
 <h3>BUILD INFO:</h3>
 
-DSOAL (NO HRTF) (x32) - https://github.com/kcat/dsoal/actions/runs/15669682594
+DSOAL (NO HRTF) (x32) - https://github.com/kcat/dsoal/actions/runs/15721639503
 
-soft_oal.dll - https://github.com/kcat/openal-soft/actions/runs/15663113932
+soft_oal.dll (x32) - https://github.com/kcat/openal-soft/actions/runs/15681911533
 
 openal soft - https://github.com/kcat/openal-soft/actions/runs/15649631255
 
 
-<h2>EXPLANATION:</h2>
-
+<h3>EXPLANATION:</h3>
 
 By default, Windows has a specific order for searching (loading) dynamically attached libraries (.dll)
 
@@ -51,6 +50,7 @@ MORE INFO - https://www.indirectsound.com/
 <br>
 
 To load from scripts (in case you need it):
+
 
 ```
 curl -fJL -# --ssl-no-revoke -o ".\fnv-dsoal.zip" https://github.com/col83/fnv-dsoal/archive/refs/heads/master.zip
