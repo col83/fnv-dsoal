@@ -47,12 +47,3 @@ MORE INFO - https://www.indirectsound.com/registryIssues.html
 This approach provides the ability to use spatial audio in games that have not fully implemented this feature or have implemented it poorly.
 
 MORE INFO - https://www.indirectsound.com/
-
-<br>
-
-To load from scripts (in case you need it):
-
-
-```
-curl -fJL -# --ssl-no-revoke -o ".\fnv-dsoal.zip" https://github.com/col83/fnv-dsoal/archive/refs/heads/master.zip
-```
