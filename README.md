@@ -42,7 +42,8 @@ https://learn.microsoft.com/windows/win32/dlls/dynamic-link-library-search-order
 https://learn.microsoft.com/windows/win32/dlls/dynamic-link-library-search-order#search-order-for-packaged-apps
 
 <br>
-[!WARNING]
+
+> [!WARNING] <p>
 Registry modification actions will cause the system to load a program with a different instance of dsound.dll for the dsound.dll library than the built-in ones:
 
 %SYSTEMROOT%\System32\dsound.dll (x64) <br>
