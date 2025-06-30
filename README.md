@@ -1,10 +1,7 @@
 > [!TIP]
-> <h3>BUILD INFO:</h3>
-
-> DSOAL (x64) - https://github.com/kcat/dsoal/actions/runs/15961734063
-
-> soft_oal.dll & router - https://github.com/kcat/openal-soft/actions/runs/15919684202
-
+> <h3>BUILD INFO:</h3> <p>
+> DSOAL (x64) - https://github.com/kcat/dsoal/actions/runs/15961734063 <p>
+> soft_oal.dll & router - https://github.com/kcat/openal-soft/actions/runs/15919684202 <p>
 > openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/15919684204
 
 <br>
