@@ -6,6 +6,16 @@ soft_oal.dll & router - https://github.com/kcat/openal-soft/actions/runs/1591968
 
 openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/15919684204
 
+<br>
+
+<h3>Introduction:</h3>
+
+This contains files to ensure installation of surround sound for Fallout New Vegas and/or another game that USES DirectSound technology.
+
+The principles of installation and interaction will be described below.
+
+The necessary links to sources are left for a clearer understanding of what is happening.
+
 <h3>EXPLANATION:</h3>
 
 By default, Windows has a specific order for searching (loading) dynamically attached libraries (.dll)
