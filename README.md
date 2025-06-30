@@ -4,7 +4,6 @@
 > soft_oal.dll & router - https://github.com/kcat/openal-soft/actions/runs/15919684202 <p>
 > openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/15919684204
 
-<br>
 
 <h3>Introduction:</h3>
 
