@@ -41,7 +41,7 @@ https://learn.microsoft.com/windows/win32/dlls/dynamic-link-library-search-order
 <br>
 
 > [!WARNING] <p>
-> Registry modification actions will cause the system to load a program with a different instance of dsound.dll for the dsound.dll library than the built-in ones: <p>
+> Actions to modify the registry will cause the system to load the program with other instances of the dsound.dll library instead of the built-in ones: <p>
 > %SYSTEMROOT%\System32\dsound.dll (x64) <p>
 > %SYSTEMROOT%\SysWOW64\dsound.dll (x32) <p>
 > Simply put - the system will imitate the actions of the 8th point of the order as the 7th point. As described above.
