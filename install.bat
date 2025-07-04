@@ -5,7 +5,7 @@ echo.
 
 REM system installation
 
-call ".\regs\regs.bat"
+call ".\regs\install.bat"
 
 REM .\optionally\oainstall.exe /u /s
 
