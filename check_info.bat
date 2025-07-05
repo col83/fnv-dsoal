@@ -21,10 +21,9 @@ IF EXIST ".\openal-info.exe" (".\openal-info.exe" && goto log_file)
 exit 1
 
 :log_file
-REM log file
 echo.
-".\openal-info.exe" > "%USERPROFILE%\Desktop\openal-info.log"
-echo %COLOR_YELLOW% .log file created - "%USERPROFILE%\Desktop\openal-info.log" %COLOR_RESET%
+".\openal-info.exe" > "%USERPROFILE%\Documents\openal-info.log"
+echo %COLOR_YELLOW% log file created - "%USERPROFILE%\Documents\openal-info.log" %COLOR_RESET%
 
 echo.
 pause
