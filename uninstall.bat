@@ -16,3 +16,6 @@ call ".\regs\uninstall.bat"
 
 taskkill /F /IM explorer.exe
 start explorer.exe
+
+echo.
+pause
