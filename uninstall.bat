@@ -13,6 +13,7 @@ del /s /q "%GAMEDIR%\dsoal_log.bat"
 
 REM SYSTEM
 call ".\regs\uninstall.bat"
+echo.
 call ".\dll\del-libs.bat"
 
 echo.
