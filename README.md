@@ -1,8 +1,8 @@
 > [!TIP]
 > <h3>BUILD INFO:</h3> <p>
-> DSOAL (x64) - https://github.com/kcat/dsoal/actions/runs/15961734063 <p>
-> soft_oal.dll & router - https://github.com/kcat/openal-soft/actions/runs/15919684202 <p>
-> openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/15919684204
+> DSOAL (x64) - https://github.com/kcat/dsoal/actions/runs/16064022958 <p>
+> soft_oal-Win*-Release - https://github.com/kcat/openal-soft/actions/runs/16063631317 <p>
+> openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/16039844889
 
 
 <h3>Introduction:</h3>
