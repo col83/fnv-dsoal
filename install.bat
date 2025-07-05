@@ -16,7 +16,7 @@ echo.
 REM fallout nv installation
 set GAMEDIR=%SYSTEMDRIVE%\Games\Fallout New Vegas
 
-copy /V /Y ".\dsoal\*" "%GAMEDIR%\"
+copy /V /Y ".\DSOAL\*" "%GAMEDIR%\"
 
 echo.
 pause
