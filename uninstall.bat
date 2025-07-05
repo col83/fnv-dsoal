@@ -12,8 +12,8 @@ del /s /q "%GAMEDIR%\alsoft.ini"
 del /s /q "%GAMEDIR%\dsoal_log.bat"
 
 REM SYSTEM
-call ".\opt\del-libs.bat"
 call ".\regs\uninstall.bat"
+call ".\dll\del-libs.bat"
 
 echo.
 echo Restart explorer.exe

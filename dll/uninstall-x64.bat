@@ -1,3 +1,3 @@
-del %SYSTEMROOT%\System32\OpenAL32.dll
-del %SYSTEMROOT%\System32\wrap_oal.dll
-del %SYSTEMROOT%\System32\soft_oal.dll
+REM (x64)
+cd %SYSTEMROOT%\System32\
+ERASE /F /Q OpenAL32.dll, wrap_oal.dll, soft_oal.dll

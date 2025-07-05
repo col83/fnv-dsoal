@@ -1,20 +1,7 @@
-@echo off
+REM (x32)
+cd %SYSTEMROOT%\SysWOW64\
+ERASE /F /Q OpenAL32.dll, wrap_oal.dll, soft_oal.dll
 
-cls
-echo.
-
-REM x32
-echo Delete x32 libraries:
-echo.
-del %SYSTEMROOT%\SysWOW64\OpenAL32.dll
-del %SYSTEMROOT%\SysWOW64\wrap_oal.dll
-del %SYSTEMROOT%\SysWOW64\soft_oal.dll
-
-echo.
-
-REM x64
-echo Delete x64 libraries:
-echo.
-del %SYSTEMROOT%\System32\OpenAL32.dll
-del %SYSTEMROOT%\System32\wrap_oal.dll
-del %SYSTEMROOT%\System32\soft_oal.dll
+REM (x64)
+cd %SYSTEMROOT%\System32\
+ERASE /F /Q OpenAL32.dll, wrap_oal.dll, soft_oal.dll
