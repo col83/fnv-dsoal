@@ -13,7 +13,10 @@ COPY /V /Y ".\dll\x64\soft_oal.dll" "%SYSTEMROOT%\System32\"
 echo.
 REM GAME
 set GAMEDIR=%SYSTEMDRIVE%\Games\Fallout New Vegas
-copy /V /Y ".\DSOAL\*" "%GAMEDIR%\"
+copy /V /Y ".\DSOAL\x32\*" "%GAMEDIR%\"
+copy /V /Y ".\DSOAL\alsoft.ini" "%GAMEDIR%\"
+copy /V /Y ".\DSOAL\default_alsoft.ini" "%GAMEDIR%\"
+copy /V /Y ".\DSOAL\dsoal_log.bat" "%GAMEDIR%\"
 
 echo.
 pause
