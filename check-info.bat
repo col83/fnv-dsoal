@@ -13,17 +13,14 @@ set ALROUTER_REJECT=wrap_oal.dll
 REM more info - https://github.com/kcat/openal-soft/issues/976
 
 
-
-
 cls
 echo.
-IF EXIST ".\openal-info.exe" (".\openal-info.exe" && goto log_file)
+IF EXIST ".\openal-info.exe" (echo %COLOR_YELLOW% Current device info: %COLOR_RESET% & echo. & ".\openal-info.exe" && goto log_file)
 exit 1
 
 :log_file
 echo.
-".\openal-info.exe" > "%USERPROFILE%\Documents\openal-info.log"
-echo %COLOR_YELLOW% log file created - "%USERPROFILE%\Documents\openal-info.log" %COLOR_RESET%
+".\openal-info.exe" > "%USERPROFILE%\Documents\openal-info.log" && echo %COLOR_YELLOW% log file created - "%USERPROFILE%\Documents\openal-info.log" %COLOR_RESET%
 
 echo.
 pause
