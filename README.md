@@ -1,8 +1,8 @@
 > [!TIP]
 > <h3>BUILD INFO:</h3> <p>
-> DSOAL - https://github.com/kcat/dsoal/actions/runs/16064022958 <p>
-> soft_oal-Win*-Release - https://github.com/kcat/openal-soft/actions/runs/16063631317 <p>
-> openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/16039844889
+> DSOAL - https://github.com/kcat/dsoal/actions/runs/16131639992 <p>
+> soft_oal-Win*-Release - https://github.com/kcat/openal-soft/actions/runs/16123191571 <p>
+> openal-soft (utils) (x64) - https://github.com/kcat/openal-soft/actions/runs/16123191547
 
 
 <h3>Introduction:</h3>
@@ -52,3 +52,9 @@ MORE INFO - https://www.indirectsound.com/registryIssues.html
 This approach provides the ability to use spatial audio in games that have not fully implemented this feature or have implemented it poorly.
 
 MORE INFO - https://www.indirectsound.com/
+
+<br>
+
+```
+curl -fJL -# -o "./fnv-dsoal.zip" https://github.com/col83/fnv-dsoal/archive/refs/heads/master.zip
+```
