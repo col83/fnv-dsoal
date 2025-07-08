@@ -1,1 +1,1 @@
-".\altonegen.exe" -t 4 -w triangle -g 0.1
+IF EXIST ".\altonegen.exe" (".\altonegen.exe" -t 4 -w triangle -g 0.1)
