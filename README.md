@@ -46,8 +46,9 @@ https://learn.microsoft.com/windows/win32/dlls/dynamic-link-library-search-order
 > %SYSTEMROOT%\SysWOW64\dsound.dll (x32) <p>
 > In simple terms, the system will simulate the actions of point 8 as point 7. As described above.
 
-MORE INFO - https://www.indirectsound.com/registryIssues.html
+<br>
 
+MORE INFO - https://www.indirectsound.com/registryIssues.html
 
 This approach provides the ability to use spatial audio in games that have not fully implemented this feature or have implemented it poorly.
 
