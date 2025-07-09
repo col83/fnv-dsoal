@@ -15,8 +15,9 @@ REM more info - https://github.com/kcat/openal-soft/issues/976
 
 cls
 IF EXIST ".\openal-info.exe" (
-   IF EXIST %SYSTEMROOT%\System32\OpenAL32.dll (goto log_file) else (echo.
-echo %COLOR_YELLOW% %SYSTEMROOT%\System32\OpenAL32.dll not found. please fix. %COLOR_RESET% 
+IF EXIST %SYSTEMROOT%\System32\OpenAL32.dll (goto log_file) else (
+echo.
+echo %COLOR_YELLOW% %SYSTEMROOT%\System32\OpenAL32.dll not found. please fix. %COLOR_RESET%
 echo.
 pause
 exit 1
