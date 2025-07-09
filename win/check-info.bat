@@ -15,17 +15,33 @@ REM more info - https://github.com/kcat/openal-soft/issues/976
 
 cls
 IF EXIST ".\openal-info.exe" (
-   IF EXIST %SYSTEMROOT%\System32\OpenAL32.dll (goto log_file) else (echo. & echo %COLOR_YELLOW% %SYSTEMROOT%\System32\OpenAL32.dll not found. please fix. %COLOR_RESET% & echo. & pause & exit 1)
+   IF EXIST %SYSTEMROOT%\System32\OpenAL32.dll (goto log_file) else (echo.
+echo %COLOR_YELLOW% %SYSTEMROOT%\System32\OpenAL32.dll not found. please fix. %COLOR_RESET% 
+echo.
+pause
+exit 1
+)
 )
 
 :log_file
+
+set LOGDIR=%USERPROFILE%\Documents
+
+set ALSOFT_LOGFILE=%LOGDIR%\alsoft.log
+
+set ALSOFT_LOGLEVEL=3
+
 echo.
 echo %COLOR_YELLOW% Current device info: %COLOR_RESET%
+
 echo.
 ".\openal-info.exe"
+
 echo.
-echo. > "%USERPROFILE%\Documents\openal-info.log"
-".\openal-info.exe" >> "%USERPROFILE%\Documents\openal-info.log" && echo %COLOR_YELLOW% log file created - "%USERPROFILE%\Documents\openal-info.log" %COLOR_RESET%
+".\openal-info.exe" > "%LOGDIR%\openal-info.log" && echo %COLOR_YELLOW% openal-info.log file created - "%LOGDIR%\openal-info.log" %COLOR_RESET%
+
+echo.
+echo %COLOR_YELLOW% alsoft.log file created - "%LOGDIR%\alsoft.log" %COLOR_RESET%
 
 echo.
 pause
