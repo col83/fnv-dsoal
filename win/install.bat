@@ -18,6 +18,3 @@ echo.
 copy /V /Y ".\DSOAL\alsoft.ini" "%GAMEDIR%\"
 copy /V /Y ".\DSOAL\default_alsoft.ini" "%GAMEDIR%\"
 copy /V /Y ".\DSOAL\dsoal_log.bat" "%GAMEDIR%\"
-
-echo.
-pause
