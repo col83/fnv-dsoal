@@ -1,3 +1,5 @@
+@echo off
+
 set GAMEDIR="%SYSTEMDRIVE%\Games\Fallout New Vegas"
 
 REM GAME
