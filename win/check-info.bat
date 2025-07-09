@@ -32,16 +32,21 @@ set ALSOFT_LOGFILE=%LOGDIR%\alsoft.log
 set ALSOFT_LOGLEVEL=3
 
 echo.
-echo %COLOR_YELLOW% Current device info: %COLOR_RESET%
+IF EXIST "%USERPROFILE%\AppData\Roaming\alsoft.ini" (
+echo %COLOR_YELLOW% Current device info ^( existing config loaded %COLOR_RESET%- "%COLOR_YELLOW%%SYSTEMDRIVE%\Users\%COLOR_GREEN%%USERNAME%%COLOR_YELLOW%\AppData\Roaming\%COLOR_GREEN%alsoft.ini%COLOR_RESET%" %COLOR_YELLOW%^)%COLOR_RESET%:
+) else (
+echo %COLOR_YELLOW% Current device info ^( without config ^)%COLOR_RESET%:
+)
 
 echo.
 ".\openal-info.exe"
 
 echo.
-".\openal-info.exe" > "%LOGDIR%\openal-info.log" && echo %COLOR_YELLOW% openal-info.log file created - "%LOGDIR%\openal-info.log" %COLOR_RESET%
+".\openal-info.exe" > "%LOGDIR%\openal-info.log" && echo %COLOR_GREEN%openal-info.log%COLOR_YELLOW% file created %COLOR_RESET%- "%COLOR_YELLOW%%SYSTEMDRIVE%\Users\%COLOR_GREEN%%USERNAME%%COLOR_YELLOW%\Documents\%COLOR_GREEN%openal-info.log%COLOR_RESET%"
 
 echo.
-echo %COLOR_YELLOW% alsoft.log file created - "%LOGDIR%\alsoft.log" %COLOR_RESET%
+
+echo %COLOR_GREEN%alsoft.log%COLOR_YELLOW% file created %COLOR_RESET%- "%COLOR_YELLOW%%SYSTEMDRIVE%\Users\%COLOR_GREEN%%USERNAME%%COLOR_YELLOW%\Documents\%COLOR_GREEN%alsoft.log%COLOR_RESET%" 
 
 echo.
 pause
