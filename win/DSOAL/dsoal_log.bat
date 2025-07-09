@@ -33,7 +33,7 @@ REM https://learn.microsoft.com/cpp/build/reference/largeaddressaware-handle-lar
 REM https://vivanewvegas.moddinglinked.com/utilities.html#Patchers
 REM https://www.nexusmods.com/newvegas/mods/62552?tab=description
 
-REM otherwise use nvse_loader.exe
+REM otherwise use nvse_loader.exe (already in use)
 
 REM game launch
 %exe%
