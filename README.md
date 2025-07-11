@@ -57,5 +57,5 @@ MORE INFO - https://www.indirectsound.com/
 <br>
 
 ```
-curl -fJL -# -o "./fnv-dsoal.zip" https://github.com/col83/fnv-dsoal/archive/refs/heads/master.zip
+git clone https://github.com/col83/fnv-dsoal.git
 ```
