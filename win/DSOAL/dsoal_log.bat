@@ -1,6 +1,6 @@
 REM change game dir & exe if you need
 
-set GAMEDIR="%SYTEMDRIVE%\Games\Fallout New Vegas"
+set GAMEDIR=%SYSTEMDRIVE%\Games\Fallout New Vegas
 set exe=%GAMEDIR%\nvse_loader.exe
 
 
@@ -36,4 +36,4 @@ REM https://www.nexusmods.com/newvegas/mods/62552?tab=description
 REM otherwise use nvse_loader.exe (already in use)
 
 REM game launch
-%exe%
+"%exe%"
