@@ -11,7 +11,7 @@ set ALROUTER_REJECT=wrap_oal.dll
 REM more info - https://github.com/kcat/openal-soft/issues/976
 
 
-REM set DSOAL_LOGLEVEL to 1 errors, 2 warnings (default), 3 verbose
+REM set DSOAL_LOGLEVEL to 1 errors, 2 warnings (default), 3 verbose, 4 (debug)
 
 
 set LOGDIR=%USERPROFILE%\Documents
