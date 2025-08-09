@@ -1,9 +1,3 @@
-add python scripts for check builds, artifact & links
+Scripts to automatically update dsoal for later publishing to a repository.
 
-generated with chatgpt in 2 days.
-
-due to complete lack of understanding and knowledge of python, i just want the scripts to do their job, but how? - it doesn't matter.
-
-they work. they do the job. great.
-
-for work it is necessary - pip install -r requirements.txt
+Not fit for use at the moment. needs refactoring
