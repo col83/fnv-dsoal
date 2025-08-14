@@ -5,22 +5,56 @@ import colorama
 from colorama import Fore, Style, init
 import asyncio
 import aiohttp
-import re
-import difflib
 
 init(autoreset=True)
 
 # ──────────────────────────────────────────────────────────
+# CONSTANTS
+# ──────────────────────────────────────────────────────────
+CONSOLE_WIDTH = 132
+CONSOLE_HEIGHT = 24
+MAX_ARTIFACTS_TO_FETCH = 2
+TOKEN_FILE = "gh_key.txt"
+WINDOW_TITLE = "dsoal artifacts check"
+REPO_OWNER = 'kcat'
+REPO_DSOAL = "dsoal"
+REPO_OPENAL_SOFT = "openal-soft"
+
+# ──────────────────────────────────────────────────────────
 # SETUP
 # ──────────────────────────────────────────────────────────
-
 if platform.system() == "Windows":
-    os.system("title dsoal artifacts check")
-    os.system("mode con: cols=132 lines=24")
+    os.system(f"title {WINDOW_TITLE}")
+    os.system(f"mode con: cols={CONSOLE_WIDTH} lines={CONSOLE_HEIGHT}")
 
-GITHUB_TOKEN = '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'
-REPO_OWNER = 'kcat'
+# Read GitHub token from file
+def get_github_token():
+    try:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        token_file_path = os.path.join(script_dir, TOKEN_FILE)
+        
+        with open(token_file_path, 'r') as file:
+            token = file.read().strip()
+            
+        if not token:
+            print(f"{Fore.RED}Error: Token file '{TOKEN_FILE}' is empty{Style.RESET_ALL}")
+            sys.exit(1)
+            
+        # Validate token format
+        valid_prefixes = ('ghp_', 'gho_', 'ghu_', 'ghs_', 'ghr_', 'github_pat_')
+        if not any(token.startswith(prefix) for prefix in valid_prefixes):
+            print(f"{Fore.RED}Error: Invalid GitHub token format. Token must start with one of: {', '.join(valid_prefixes)}{Style.RESET_ALL}")
+            sys.exit(1)
+            
+        return token
+    except FileNotFoundError:
+        print(f"{Fore.RED}Error: Token file '{TOKEN_FILE}' not found in script directory{Style.RESET_ALL}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"{Fore.RED}Error reading token file: {str(e)}{Style.RESET_ALL}")
+        sys.exit(1)
 
+GITHUB_TOKEN = get_github_token()
 HEADERS = {
     'Authorization': f'token {GITHUB_TOKEN}',
     'Accept': 'application/vnd.github.v3+json'
@@ -29,35 +63,43 @@ HEADERS = {
 # ──────────────────────────────────────────────────────────
 # FETCH ARTIFACTS
 # ──────────────────────────────────────────────────────────
-
 async def fetch_json(session, url):
     try:
         async with session.get(url) as resp:
             if resp.status != 200:
-                print(f"{Fore.RED}Error fetching {url}, Status: {resp.status}{Style.RESET_ALL}")
+                error_text = await resp.text()
+                print(f"{Fore.RED}Error fetching {url}, Status: {resp.status}, Response: {error_text}{Style.RESET_ALL}")
                 return resp.status, None
             return None, await resp.json()
     except Exception as e:
         print(f"{Fore.RED}Exception during fetch: {str(e)}{Style.RESET_ALL}")
         return -1, None
 
-
 async def fetch_artifacts(session, repo_name, workflow_filename=None, artifact_filter=None):
     artifacts = []
     run_id = None
-
+    
     if workflow_filename:
         runs_url = f"https://api.github.com/repos/{REPO_OWNER}/{repo_name}/actions/workflows/{workflow_filename}/runs"
         error, runs_data = await fetch_json(session, runs_url)
         if error:
             return (f"{repo_name} ({workflow_filename})", f"Failed to fetch workflow '{workflow_filename}' runs: {error}", [], None)
-
+        
+        if not isinstance(runs_data, dict) or 'workflow_runs' not in runs_data:
+            return (f"{repo_name} ({workflow_filename})", "Invalid workflow runs data format", [], None)
+            
         for run in runs_data.get('workflow_runs', []):
+            if not isinstance(run, dict) or 'id' not in run:
+                continue
+                
             rid = run['id']
             art_url = f"https://api.github.com/repos/{REPO_OWNER}/{repo_name}/actions/runs/{rid}/artifacts"
             error, art_data = await fetch_json(session, art_url)
-            if error is None and art_data.get('artifacts'):
+            
+            if error is None and art_data and isinstance(art_data, dict) and 'artifacts' in art_data:
                 for artifact in art_data['artifacts']:
+                    if not isinstance(artifact, dict):
+                        continue
                     name = artifact.get('name', '')
                     if not artifact_filter or artifact_filter(name):
                         artifacts.append((name, artifact.get('archive_download_url'), artifact.get('id'), rid))
@@ -69,50 +111,58 @@ async def fetch_artifacts(session, repo_name, workflow_filename=None, artifact_f
         error, data = await fetch_json(session, artifacts_url)
         if error:
             return (repo_name, f"Failed to fetch artifacts for {repo_name}: {error}", [], None)
-
-        artifacts = [(a['name'], a['archive_download_url'], a['id'], a['workflow_run']['id']) for a in sorted(
+            
+        if not isinstance(data, dict) or 'artifacts' not in data:
+            return (repo_name, "Invalid artifacts data format", [], None)
+            
+        # Get latest MAX_ARTIFACTS_TO_FETCH artifacts
+        sorted_artifacts = sorted(
             data.get('artifacts', []),
             key=lambda x: x.get('workflow_run', {}).get('id', 0),
-            reverse=True)[:2]]
-
-        if data.get('artifacts'):
-            run_id = data['artifacts'][0].get('workflow_run', {}).get('id')
-            if run_id is None:
-                run_id = ''
-
-    if not artifacts:
-        print(f"{Fore.YELLOW}No artifacts found for {repo_name}{Style.RESET_ALL}")
+            reverse=True
+        )[:MAX_ARTIFACTS_TO_FETCH]
+        
+        artifacts = []
+        for a in sorted_artifacts:
+            if not isinstance(a, dict):
+                continue
+            run_id_value = a.get('workflow_run', {}).get('id')
+            artifacts.append((a['name'], a['archive_download_url'], a['id'], run_id_value))
+            
+        if artifacts:
+            run_id = artifacts[0][3]  # Use artifacts list instead of sorted_artifacts
+    
+    artifacts.sort(key=lambda x: x[0])
     
     output_lines = []
-    for name, url, artifact_id, run_id in artifacts:
-        artifact_url = f"https://github.com/{REPO_OWNER}/{repo_name}/actions/runs/{run_id}/artifacts/{artifact_id}"
+    for name, url, artifact_id, run_id_val in artifacts:
+        artifact_url = f"https://github.com/{REPO_OWNER}/{repo_name}/actions/runs/{run_id_val}/artifacts/{artifact_id}"
         colored_name = f"{Fore.GREEN}{name}{Style.RESET_ALL}"
-        output_lines.append(f"{colored_name} - {artifact_url}")
-
+        colored_artifact_url = f"{Fore.CYAN}{artifact_url}{Style.RESET_ALL}"
+        output_lines.append(f"{colored_name} - {colored_artifact_url}")
+    
     if run_id:
         build_url = f"https://github.com/{REPO_OWNER}/{repo_name}/actions/runs/{run_id}"
         colored_build_url = f"{Fore.YELLOW}{build_url}{Style.RESET_ALL}"
         output_lines.append(f"\nBuild log - {colored_build_url}")
-
+    
     label = f"{repo_name} ({workflow_filename})" if workflow_filename else repo_name
     return (label, None, output_lines, run_id)
 
 # ──────────────────────────────────────────────────────────
 # MAIN
 # ──────────────────────────────────────────────────────────
-
 async def main():
     async with aiohttp.ClientSession(headers=HEADERS) as session:
         sections = [
-            ("dsoal", None, None, 'dsoal'),
-            ("openal-soft", "ci.yml", lambda name: 'Win' in name and name.endswith('-Release'), 'soft_oal'),
-            ("openal-soft", "utils.yml", None, 'openal_soft')
+            (REPO_DSOAL, None, None),
+            (REPO_OPENAL_SOFT, "ci.yml", lambda name: 'Win' in name and name.endswith('-Release')),
+            (REPO_OPENAL_SOFT, "utils.yml", None)
         ]
-
-        tasks = [fetch_artifacts(session, repo, workflow, art_filter) for repo, workflow, art_filter, _ in sections]
+        tasks = [fetch_artifacts(session, repo, workflow, art_filter) for repo, workflow, art_filter in sections]
         results = await asyncio.gather(*tasks)
-
-        for (repo, workflow, _, run_key), (label, error, output, run_id) in zip(sections, results):
+        
+        for (repo, workflow, art_filter), (label, error, output, _) in zip(sections, results):
             print("")
             print(f"=== Artifacts from {label} ===\n")
             if error:
